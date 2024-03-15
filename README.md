@@ -3,19 +3,53 @@ API User test
 A API USER é uma API RESTful que permite o acesso a dados sobre usuários.
 Endpoints
 
+## Installation
+
+```bash
+$ npm install
+```
+
+## Running the app
+
+```bash
+# development
+$ docker-compose up -d
+$ npm run dev
+```
+
 A API possui os seguintes endpoints disponíveis:
-POST /generate
+POST /users
 
 Este endpoint permite realizar cadastro de usuários com os envios de dados em JSON. Para realizar um cadastro, é necessário enviar uma requisição POST com os seguintes campos:
 
-    name: nome completo do usuário;
-    linkedin: link do perfil do usuário no LinkedIn;
-    github: link do perfil do usuário no GitHub;
-    description: uma descrição breve do usuário.
+    name: string;
+    email: string;
+    telefone: string;
 
-GET /:name/:id
+Este endpoint retorna os usuários cadastrados na API em formato JSON. 
 
-Este endpoint retorna um usuário cadastrado na API em formato JSON, filtrando pelo nome e id do usuário. Para realizar a consulta, é necessário enviar uma requisição GET com os seguintes parâmetros na URL:
+GET /users
 
-    name: nome completo do usuário;
-    id: identificador único do usuário.
+```javascript
+[
+	{
+		"id": "97c9d1fb-686f-4540-aef8-46bbb171f491",
+		"name": "yuri",
+		"email": "email@gmail.com",
+		"telefone": "11111111111"
+	},
+]
+```
+
+Este endpoint retorna o usuário cadastrado na API em formato JSON. Através do parametro id enviado na url
+
+GET /users/:id
+
+```javascript
+	{
+		"id": "97c9d1fb-686f-4540-aef8-46bbb171f491",
+		"name": "yuri",
+		"email": "email@gmail.com",
+		"telefone": "11111111111"
+	}
+```
